@@ -1,4 +1,3 @@
-# NOTE: remove this workflow if you don't want to publish packages
 name: Publish package
 
 on:
@@ -18,3 +17,7 @@ jobs:
     uses: tree-sitter/workflows/.github/workflows/package-crates.yml@main
     secrets:
       CARGO_REGISTRY_TOKEN: ${{secrets.CARGO_TOKEN}}
+  pypi:
+    uses: tree-sitter/workflows/.github/workflows/package-pypi.yml@main
+    secrets:
+      PYPI_API_TOKEN: ${{secrets.PYPI_TOKEN}}

@@ -1,1 +1,1 @@
-; NOTE: add highlight queries here
+; TODO: add highlight queries here

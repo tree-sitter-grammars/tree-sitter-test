@@ -5,7 +5,7 @@ module.exports = grammar({
   name: "test",
 
   rules: {
-    // NOTE: add the actual grammar rules
-    changeme: $ => "",
+    // TODO: add the actual grammar rules
+    corpus: $ => "",
   }
 });

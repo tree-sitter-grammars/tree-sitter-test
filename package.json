@@ -1,12 +1,12 @@
 {
   "name": "tree-sitter-test",
-  "version": "0.0.1",
-  "description": "Test grammar for tree-sitter",
+  "version": "0.1.0",
+  "description": "TS corpus test grammar for tree-sitter",
   "repository": "github:tree-sitter-grammars/tree-sitter-test",
   "author": "ObserverOfTime <chronobserver@disroot.org>",
   "license": "MIT",
-  "types": "bindings/node",
   "main": "bindings/node",
+  "types": "bindings/node",
   "files": [
     "grammar.js",
     "binding.gyp",
@@ -35,9 +35,9 @@
   },
   "tree-sitter": [
     {
-      "scope": "source.test",
-  "highlights": "queries/highlights.scm",
-      "injection-regex": "^test$"
+      "scope": "text.test",
+      "highlights": "queries/highlights.scm",
+      "injections": "queries/injections.scm"
     }
   ]
 }

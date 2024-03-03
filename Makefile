@@ -6,15 +6,6 @@ LANGUAGE_NAME := tree-sitter-test
 SRC_DIR := src
 
 PARSER_URL := https://github.com/tree-sitter-grammars/tree-sitter-test
-PARSER_REPO_URL := $(shell git -C $(SRC_DIR) remote get-url origin 2>/dev/null)
-
-ifeq ($(PARSER_URL),)
-	PARSER_URL := $(subst .git,,$(PARSER_REPO_URL))
-ifeq ($(shell echo $(PARSER_URL) | grep '^[a-z][-+.0-9a-z]*://'),)
-	PARSER_URL := $(subst :,/,$(PARSER_URL))
-	PARSER_URL := $(subst git@,https://,$(PARSER_URL))
-endif
-endif
 
 TS ?= tree-sitter
 

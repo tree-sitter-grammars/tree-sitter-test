@@ -1,9 +1,9 @@
 {
   "name": "test",
   "rules": {
-    "source_file": {
+    "corpus": {
       "type": "STRING",
-      "value": "hello"
+      "value": ""
     }
   },
   "extras": [

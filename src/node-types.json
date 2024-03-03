@@ -1,11 +1,11 @@
 [
   {
-    "type": "source_file",
+    "type": "corpus",
     "named": true,
     "fields": {}
   },
   {
-    "type": "hello",
+    "type": "",
     "named": false
   }
 ]
