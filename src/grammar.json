@@ -75,6 +75,18 @@
           "value": "name"
         },
         {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "attributes"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
           "type": "ALIAS",
           "content": {
             "type": "SYMBOL",
@@ -84,6 +96,172 @@
           "value": "separator"
         }
       ]
+    },
+    "attributes": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "FIELD",
+        "name": "attribute",
+        "content": {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "skip"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "error"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "fail_fast"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "language"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "platform"
+            }
+          ]
+        }
+      }
+    },
+    "skip": {
+      "type": "STRING",
+      "value": ":skip"
+    },
+    "error": {
+      "type": "STRING",
+      "value": ":error"
+    },
+    "fail_fast": {
+      "type": "STRING",
+      "value": ":fail-fast"
+    },
+    "language": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": ":language"
+        },
+        {
+          "type": "IMMEDIATE_TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "("
+          }
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_lang"
+          },
+          "named": true,
+          "value": "parameter"
+        },
+        {
+          "type": "IMMEDIATE_TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": ")"
+          }
+        }
+      ]
+    },
+    "platform": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": ":platform"
+        },
+        {
+          "type": "IMMEDIATE_TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": "("
+          }
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_os"
+          },
+          "named": true,
+          "value": "parameter"
+        },
+        {
+          "type": "IMMEDIATE_TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": ")"
+          }
+        }
+      ]
+    },
+    "_lang": {
+      "type": "IMMEDIATE_TOKEN",
+      "content": {
+        "type": "REPEAT1",
+        "content": {
+          "type": "PATTERN",
+          "value": "[\\w.-]"
+        }
+      }
+    },
+    "_os": {
+      "type": "IMMEDIATE_TOKEN",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "linux"
+          },
+          {
+            "type": "STRING",
+            "value": "macos"
+          },
+          {
+            "type": "STRING",
+            "value": "ios"
+          },
+          {
+            "type": "STRING",
+            "value": "freebsd"
+          },
+          {
+            "type": "STRING",
+            "value": "dragonfly"
+          },
+          {
+            "type": "STRING",
+            "value": "netbsd"
+          },
+          {
+            "type": "STRING",
+            "value": "openbsd"
+          },
+          {
+            "type": "STRING",
+            "value": "solaris"
+          },
+          {
+            "type": "STRING",
+            "value": "android"
+          },
+          {
+            "type": "STRING",
+            "value": "windows"
+          }
+        ]
+      }
     },
     "_equals": {
       "type": "TOKEN",
