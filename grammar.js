@@ -1,63 +1,69 @@
 /// <reference types="./types/dsl" />
 // @ts-check
 
-const I = token.immediate;
-
 module.exports = grammar({
   name: "test",
 
-  extras: _ => [/\r?\n/],
+  externals: $ => [
+    $._equals_begin,
+    $._equals_end,
+    $._dashes,
+  ],
+
+  extras: _ => [],
 
   rules: {
-    file: $ => repeat($.test),
-
-    test: $ => seq(
-      $.header,
-      alias(repeat1(/./), $.input),
-      alias($._dashes, $.separator),
-      alias(repeat(/./), $.output)
+    file: $ => repeat(
+      choice($.test, $._eol)
     ),
 
+    test: $ => prec.right(seq(
+      $.header,
+      alias($._body, $.input),
+      alias($._dashes, $.separator),
+      optional(alias($._body, $.output)),
+    )),
+
+    _line: _ => /[^\r\n]+/,
+
+    _body: $ => repeat1(choice($._line, $._eol)),
+
     header: $ => seq(
-      alias($._equals, $.separator),
-      alias(repeat1(/[^\r\n]/), $.name),
+      alias($._equals_begin, $.separator),
+      alias($._line, $.name),
       optional($.attributes),
-      alias($._equals, $.separator)
+      alias($._equals_end, $.separator),
     ),
 
     attributes: $ => repeat1(
-      field("attribute", choice(
-        $.skip,
-        $.error,
-        $.fail_fast,
-        $.language,
-        $.platform,
-      ))
+      choice($.attribute, $._eol)
     ),
 
-    skip: _ => ":skip",
+    attribute: $ => choice(
+      ":skip",
+      ":error",
+      ":fail-fast",
+      $._language,
+      $._platform,
+    ),
 
-    error: _ => ":error",
-
-    fail_fast: _ => ":fail-fast",
-
-    language: $ => seq(
+    _language: $ => seq(
       ":language",
-      I("("),
-      alias($._lang, $.parameter),
-      I(")")
+      "(",
+      field("language", alias($._lang, $.parameter)),
+      ")"
     ),
 
-    platform: $ => seq(
+    _platform: $ => seq(
       ":platform",
-      I("("),
-      alias($._os, $.parameter),
-      I(")")
+      "(",
+      field("platform", alias($._os, $.parameter)),
+      ")"
     ),
 
-    _lang: _ => I(repeat1(/[\w.-]/)),
+    _lang: _ => token(repeat1(/[\w.-]/)),
 
-    _os: _ => I(choice(
+    _os: _ => token(choice(
       "linux",
       "macos",
       "ios",
@@ -70,8 +76,6 @@ module.exports = grammar({
       "windows",
     )),
 
-    _equals: $ => token(prec(1, repeat1("="))),
-
-    _dashes: $ => token(prec(1, seq("---", repeat("-"))))
+    _eol: _ => /[\r\n]|\r\n/
   }
 });

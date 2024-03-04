@@ -37,7 +37,8 @@
     {
       "scope": "text.test",
       "highlights": "queries/highlights.scm",
-      "injections": "queries/injections.scm"
+      "injections": "queries/injections.scm",
+      "file-types": ["tst"]
     }
   ]
 }

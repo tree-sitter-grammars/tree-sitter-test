@@ -36,7 +36,20 @@ jobs:
         uses: tree-sitter/parser-setup-action@v1.1
         with:
           node-version: ${{vars.NODE_VERSION}}
+      - name: Check for scanner changes
+        uses: tj-actions/changed-files@v42
+        id: scanner-check
+        if: runner.os == 'Linux'
+        with:
+          files: src/scanner.c
+      - name: Fuzz scanner
+        uses: tree-sitter/fuzz-action@v4
+        if: steps.scanner-check.outputs.any_changed == 'true'
+        with:
+          corpus: examples
       - name: Run tests
         uses: tree-sitter/parser-test-action@v1.2
         with:
           test-library: ${{runner.os == 'Linux'}}
+          corpus-files: examples/*
+          invalid-files: examples/invalid.tst

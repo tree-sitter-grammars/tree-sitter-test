@@ -1,34 +1,43 @@
 [
   {
-    "type": "attributes",
+    "type": "attribute",
     "named": true,
     "fields": {
-      "attribute": {
-        "multiple": true,
-        "required": true,
+      "language": {
+        "multiple": false,
+        "required": false,
         "types": [
           {
-            "type": "error",
+            "type": "parameter",
             "named": true
-          },
+          }
+        ]
+      },
+      "platform": {
+        "multiple": false,
+        "required": false,
+        "types": [
           {
-            "type": "fail_fast",
-            "named": true
-          },
-          {
-            "type": "language",
-            "named": true
-          },
-          {
-            "type": "platform",
-            "named": true
-          },
-          {
-            "type": "skip",
+            "type": "parameter",
             "named": true
           }
         ]
       }
+    }
+  },
+  {
+    "type": "attributes",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "attribute",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -75,44 +84,9 @@
     "fields": {}
   },
   {
-    "type": "language",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "parameter",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "name",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "output",
     "named": true,
     "fields": {}
-  },
-  {
-    "type": "platform",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "parameter",
-          "named": true
-        }
-      ]
-    }
   },
   {
     "type": "test",
@@ -150,6 +124,14 @@
     "named": false
   },
   {
+    "type": ":error",
+    "named": false
+  },
+  {
+    "type": ":fail-fast",
+    "named": false
+  },
+  {
     "type": ":language",
     "named": false
   },
@@ -158,11 +140,11 @@
     "named": false
   },
   {
-    "type": "error",
-    "named": true
+    "type": ":skip",
+    "named": false
   },
   {
-    "type": "fail_fast",
+    "type": "name",
     "named": true
   },
   {
@@ -171,10 +153,6 @@
   },
   {
     "type": "separator",
-    "named": true
-  },
-  {
-    "type": "skip",
     "named": true
   }
 ]
