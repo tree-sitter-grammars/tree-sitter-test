@@ -5,6 +5,23 @@
 //!
 //! ```
 //! let code = r#"
+//! ==================
+//! Return statements
+//! ==================
+//!
+//! func x() int {
+//!   return 1;
+//! }
+//!
+//! ---
+//!
+//! (source_file
+//!   (function_definition
+//!     (identifier)
+//!     (parameter_list)
+//!     (primitive_type)
+//!     (block
+//!       (return_statement (number)))))
 //! "#;
 //! let mut parser = tree_sitter::Parser::new();
 //! parser.set_language(&tree_sitter_test::language()).expect("Error loading Test grammar");
