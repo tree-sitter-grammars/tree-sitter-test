@@ -19,8 +19,9 @@ INCLUDEDIR ?= $(PREFIX)/include
 LIBDIR ?= $(PREFIX)/lib
 PCLIBDIR ?= $(LIBDIR)/pkgconfig
 
-# object files
-OBJS := $(patsubst %.c,%.o,$(wildcard $(SRC_DIR)/*.c))
+# source/object files
+SRCS := $(wildcard $(SRC_DIR)/*.c)
+OBJS := $(patsubst %.c,%.o,$(SRCS))
 
 # flags
 ARFLAGS := rcs
@@ -53,6 +54,10 @@ ifneq ($(filter $(shell uname),FreeBSD NetBSD DragonFly),)
 endif
 
 all: lib$(LANGUAGE_NAME).a lib$(LANGUAGE_NAME).$(SOEXT) $(LANGUAGE_NAME).pc
+
+parser/test.so: $(SRCS)
+	@mkdir -p $(@D)
+	$(CC) $(CFLAGS) -Os -shared $^ -o $@
 
 lib$(LANGUAGE_NAME).a: $(OBJS)
 	$(AR) $(ARFLAGS) $@ $^
@@ -93,7 +98,7 @@ uninstall:
 		'$(DESTDIR)$(PCLIBDIR)'/$(LANGUAGE_NAME).pc
 
 clean:
-	$(RM) $(OBJS) $(LANGUAGE_NAME).pc lib$(LANGUAGE_NAME).a lib$(LANGUAGE_NAME).$(SOEXT)
+	$(RM) $(OBJS) $(LANGUAGE_NAME).pc lib$(LANGUAGE_NAME).a lib$(LANGUAGE_NAME).$(SOEXT) parser/test.so
 
 test:
 	$(TS) test

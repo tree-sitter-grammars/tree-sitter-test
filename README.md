@@ -14,6 +14,28 @@ A tree-sitter parser for corpus test files.
 ## References
 
 - [Command: test](https://tree-sitter.github.io/tree-sitter/creating-parsers#command-test)
+- [Constant `std::env::consts::OS`](https://doc.rust-lang.org/std/env/consts/constant.OS.html)
+
+## Usage
+
+This can be used as a standalone plugin in Neovim, without nvim-treesitter.<br>
+Here's how you can install it using [lazy.nvim](https://github.com/folke/lazy.nvim):
+
+```lua
+{
+    'tree-sitter-grammars/tree-sitter-test',
+    build = 'make parser/test.so',
+    init = function()
+        -- enable dynamic language injection
+        vim.g.tstest_dynamic_injection = true
+        -- conceal test separators
+        -- 'off': no conceal
+        -- 'short': shorten
+        -- 'full': full-width
+        vim.g.tstest_conceal_separators = 'off'
+    end
+}
+```
 
 [ci]: https://img.shields.io/github/actions/workflow/status/tree-sitter-grammars/tree-sitter-test/ci.yml?logo=github&label=CI
 [discord]: https://img.shields.io/discord/1063097320771698699?logo=discord&label=discord

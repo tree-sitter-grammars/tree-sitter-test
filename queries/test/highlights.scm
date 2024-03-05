@@ -14,6 +14,15 @@
 (attribute
   platform: (parameter) @constant.builtin)
 
-(separator) @punctuation.delimiter
+((test
+  (separator) @punctuation.delimiter)
+  (#set! conceal ""))
 
-[ "(" ")" ] @punctuation.bracket
+((header
+  (separator) @punctuation.delimiter)
+  (#set! conceal ""))
+
+[
+  "("
+  ")"
+] @punctuation.bracket
