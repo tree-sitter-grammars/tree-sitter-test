@@ -53,10 +53,10 @@ pub fn language() -> Language {
 pub const NODE_TYPES: &str = include_str!("../../src/node-types.json");
 
 /// The syntax highlight queries for this grammar.
-pub const HIGHLIGHTS_QUERY: &str = include_str!("../../queries/highlights.scm");
+pub const HIGHLIGHTS_QUERY: &str = include_str!("../../queries/test/highlights.scm");
 
 /// The language injection queries for this grammar.
-pub const INJECTIONS_QUERY: &str = include_str!("../../queries/injections.scm");
+pub const INJECTIONS_QUERY: &str = include_str!("../../queries/test/injections.scm");
 
 #[cfg(test)]
 mod tests {

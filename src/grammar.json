@@ -107,6 +107,10 @@
           "value": "name"
         },
         {
+          "type": "SYMBOL",
+          "name": "_eol"
+        },
+        {
           "type": "CHOICE",
           "members": [
             {

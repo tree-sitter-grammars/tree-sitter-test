@@ -31,6 +31,7 @@ module.exports = grammar({
     header: $ => seq(
       alias($._equals_begin, $.separator),
       alias($._line, $.name),
+      $._eol,
       optional($.attributes),
       alias($._equals_end, $.separator),
     ),

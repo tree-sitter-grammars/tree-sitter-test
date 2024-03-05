@@ -23,8 +23,6 @@ typedef struct {
 
 static inline void advance(TSLexer *lexer) { lexer->advance(lexer, false); }
 
-static inline void skip(TSLexer *lexer) { lexer->advance(lexer, true); }
-
 static inline bool scan(TSLexer *lexer, Scanner *scanner, char chr, int symbol) {
     uint32_t length;
 
@@ -48,8 +46,8 @@ static inline bool scan(TSLexer *lexer, Scanner *scanner, char chr, int symbol) 
 
     if (scanner->length != length) return symbol == DASHES;
 
-    if (lexer->lookahead == '\r') skip(lexer);
-    if (lexer->lookahead == '\n') skip(lexer);
+    if (lexer->lookahead == '\r') advance(lexer);
+    if (lexer->lookahead == '\n') advance(lexer);
 
     lexer->result_symbol = symbol;
     return true;

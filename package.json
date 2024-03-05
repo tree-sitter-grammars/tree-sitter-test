@@ -4,6 +4,9 @@
   "description": "TS corpus test grammar for tree-sitter",
   "repository": "github:tree-sitter-grammars/tree-sitter-test",
   "author": "ObserverOfTime <chronobserver@disroot.org>",
+  "contributors": [
+    "Amaan Qureshi <amaanq12@gmail.com>"
+  ],
   "license": "MIT",
   "main": "bindings/node",
   "types": "bindings/node",
@@ -12,7 +15,7 @@
     "binding.gyp",
     "types/dsl.d.ts",
     "bindings/node/*",
-    "queries/*",
+    "queries/**",
     "src/**"
   ],
   "keywords": [
@@ -36,8 +39,8 @@
   "tree-sitter": [
     {
       "scope": "text.test",
-      "highlights": "queries/highlights.scm",
-      "injections": "queries/injections.scm",
+      "highlights": "queries/test/highlights.scm",
+      "injections": "queries/test/injections.scm",
       "file-types": ["tst"]
     }
   ]
