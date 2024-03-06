@@ -41,7 +41,7 @@
       "scope": "text.test",
       "highlights": "queries/test/highlights.scm",
       "injections": "queries/test/injections.scm",
-      "file-types": ["tst"]
+      "file-types": ["test"]
     }
   ]
 }

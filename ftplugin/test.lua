@@ -1,7 +1,7 @@
-vim.treesitter.start(0, "test")
+vim.treesitter.start()
 
-vim.wo.foldmethod = 'expr'
-vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.wo.foldmethod = "expr"
+vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
 local conceals = vim.treesitter.query.parse("test", [[
 (test (separator) @dashes)
@@ -13,7 +13,7 @@ local conceals = vim.treesitter.query.parse("test", [[
 
 if vim.g.tstest_fullwidth_rules then
     local ns = vim.api.nvim_create_namespace("tstest-conceals")
-    local tree = vim.treesitter.get_parser(0, "test"):parse()[1]
+    local tree = vim.treesitter.get_parser():parse()[1]
     for id, node, _ in conceals:iter_captures(tree:root(), 0) do
         local name = conceals.captures[id]
         local row, col, _, _ = node:range()
@@ -23,7 +23,7 @@ if vim.g.tstest_fullwidth_rules then
                 virt_text_hide = true,
                 virt_text = {{
                     string.rep("-", vim.o.columns),
-                    "@punctuation.delimiter"
+                    vim.g.tstest_rule_hlgroup or "LspInlayHint"
                 }}
             })
         else
@@ -32,7 +32,7 @@ if vim.g.tstest_fullwidth_rules then
                 virt_text_hide = true,
                 virt_text = {{
                     string.rep("=", vim.o.columns),
-                    "@punctuation.delimiter"
+                    vim.g.tstest_rule_hlgroup or "LspInlayHint"
                 }}
             })
         end

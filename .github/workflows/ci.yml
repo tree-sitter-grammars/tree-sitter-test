@@ -52,4 +52,4 @@ jobs:
         with:
           test-library: ${{runner.os == 'Linux'}}
           corpus-files: examples/*
-          invalid-files: examples/invalid.tst
+          invalid-files: examples/invalid.test

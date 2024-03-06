@@ -93,6 +93,11 @@ uninstall:
 		'$(DESTDIR)$(INCLUDEDIR)'/tree_sitter/$(LANGUAGE_NAME).h \
 		'$(DESTDIR)$(PCLIBDIR)'/$(LANGUAGE_NAME).pc
 
+parser/test.so: CFLAGS += -Os -shared
+parser/test.so: $(SRCS)
+	@mkdir -p parser
+	$(CC) $(CFLAGS) $^ -o $@
+
 clean:
 	$(RM) $(OBJS) $(LANGUAGE_NAME).pc lib$(LANGUAGE_NAME).a lib$(LANGUAGE_NAME).$(SOEXT)
 

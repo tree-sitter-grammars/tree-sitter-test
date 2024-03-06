@@ -23,16 +23,17 @@ Here's how you can install it using [lazy.nvim](https://github.com/folke/lazy.nv
 
 ```lua
 {
-    'tree-sitter-grammars/tree-sitter-test',
-    -- macOS: replace .so with .dylib
-    -- Windows: compile the .dll yourself
-    build = 'make libtree-sitter-test.so',
-    ft = 'tstest',
+    "tree-sitter-grammars/tree-sitter-test",
+    -- compile on your own on Windows
+    build = "make parser/test.so",
+    ft = "test",
     init = function()
-        -- enable dynamic language injection
-        vim.g.tstest_dynamic_injection = true
-        -- show full-width rules for test separators
-        vim.g.tstest_fullwidth_rules = true
+        -- toggle dynamic language injection
+        vim.g.tstest_dynamic_injection = false
+        -- toggle full-width rules for test separators
+        vim.g.tstest_fullwidth_rules = false
+        -- set the highlight group of the rules
+        vim.g.tstest_rule_hlgroup = "LspInlayHint"
     end
 }
 ```

@@ -39,14 +39,6 @@ local function set_injection(_, _, bufnr, _, metadata)
     end
 end
 
-local src = debug.getinfo(1, "S").short_src
----@diagnostic disable-next-line: param-type-mismatch
-local root = vim.fs.dirname(vim.fs.dirname(src))
-local ext = package.cpath:match("%p[\\/]?%p(%.%a+)")
-local parser = vim.fs.joinpath(root, "libtree-sitter-test"..ext)
-
-vim.treesitter.language.add("test", {filetype = "tstest", path = parser})
-
 if vim.g.tstest_dynamic_injection then
     vim.treesitter.query.add_directive("set-language-from-grammar!", set_injection, {})
 end
