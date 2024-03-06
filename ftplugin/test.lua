@@ -11,10 +11,12 @@ local conceals = vim.treesitter.query.parse("test", [[
 (header (separator) @equals.end .)
 ]])
 
-if vim.g.tstest_fullwidth_rules then
-    local ns = vim.api.nvim_create_namespace("tstest-conceals")
-    local tree = vim.treesitter.get_parser():parse()[1]
-    for id, node, _ in conceals:iter_captures(tree:root(), 0) do
+---@param ns integer
+---@param root TSNode
+---@param start integer
+---@param stop integer
+local function set_rules(ns, root, start, stop)
+    for id, node, _ in conceals:iter_captures(root, 0, start, stop) do
         local name = conceals.captures[id]
         local row, col, _, _ = node:range()
         if name == "dashes" then
@@ -37,4 +39,21 @@ if vim.g.tstest_fullwidth_rules then
             })
         end
     end
+end
+
+if vim.g.tstest_fullwidth_rules then
+    local ns = vim.api.nvim_create_namespace("tstest-rules")
+    local parser = vim.treesitter.get_parser()
+    set_rules(ns, parser:parse()[1]:root(), 0, 0)
+    parser:register_cbs({
+        ---@param ranges Range6[]
+        ---@param tree TSTree
+        on_changedtree = function(ranges, tree)
+            ---@param range Range6
+            vim.iter(ranges):each(function(range)
+                vim.api.nvim_buf_clear_namespace(0, ns, range[1], range[3])
+                set_rules(ns, tree:root(), range[1], range[3])
+            end)
+        end
+    }, false)
 end
