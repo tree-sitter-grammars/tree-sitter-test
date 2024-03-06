@@ -14,16 +14,16 @@
   (output) @injection.content)
   (#set! injection.language "query"))
 
-; NOTE: for dynamic injection
-; ((test
-;   (header
-;     [
-;       (attributes
-;         (attribute
-;           !language))
-;       ((name)
-;         .
-;         (separator))
-;     ])
-;   (input) @injection.content)
-;  (#set! injection.language ""))
+; NOTE: custom dynamic injection
+((test
+  (header
+    [
+      (attributes
+        (attribute
+          !language))
+      ((name)
+        .
+        (separator))
+    ])
+  (input) @injection.content)
+  (#set-language-from-grammar!))

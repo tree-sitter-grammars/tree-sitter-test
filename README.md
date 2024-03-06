@@ -24,15 +24,15 @@ Here's how you can install it using [lazy.nvim](https://github.com/folke/lazy.nv
 ```lua
 {
     'tree-sitter-grammars/tree-sitter-test',
-    build = 'make parser/test.so',
+    -- macOS: replace .so with .dylib
+    -- Windows: compile the .dll yourself
+    build = 'make libtree-sitter-test.so',
+    ft = 'tstest',
     init = function()
         -- enable dynamic language injection
         vim.g.tstest_dynamic_injection = true
-        -- conceal test separators
-        -- 'off': no conceal
-        -- 'short': shorten
-        -- 'full': full-width
-        vim.g.tstest_conceal_separators = 'off'
+        -- show full-width rules for test separators
+        vim.g.tstest_fullwidth_rules = true
     end
 }
 ```
