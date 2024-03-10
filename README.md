@@ -33,7 +33,7 @@ Here's how you can install it using [lazy.nvim](https://github.com/folke/lazy.nv
         -- toggle full-width rules for test separators
         vim.g.tstest_fullwidth_rules = false
         -- set the highlight group of the rules
-        vim.g.tstest_rule_hlgroup = "LspInlayHint"
+        vim.g.tstest_rule_hlgroup = "FoldColumn"
     end
 }
 ```

@@ -25,7 +25,7 @@ local function set_rules(ns, root, start, stop)
                 virt_text_hide = true,
                 virt_text = {{
                     string.rep("-", vim.o.columns),
-                    vim.g.tstest_rule_hlgroup or "LspInlayHint"
+                    vim.g.tstest_rule_hlgroup or "FoldColumn"
                 }}
             })
         else
@@ -34,7 +34,7 @@ local function set_rules(ns, root, start, stop)
                 virt_text_hide = true,
                 virt_text = {{
                     string.rep("=", vim.o.columns),
-                    vim.g.tstest_rule_hlgroup or "LspInlayHint"
+                    vim.g.tstest_rule_hlgroup or "FoldColumn"
                 }}
             })
         end
