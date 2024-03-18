@@ -7,45 +7,58 @@ let package = Package(
     products: [
         .library(name: "TreeSitterTest", targets: ["TreeSitterTest"]),
     ],
-    dependencies: [],
+    dependencies: [
+        .package(url: "https://github.com/ChimeHQ/SwiftTreeSitter", from: "0.8.0"),
+    ],
     targets: [
-        .target(name: "TreeSitterTest",
-                path: ".",
-                exclude: [
-                    "Cargo.toml",
-                    "Makefile",
-                    "binding.gyp",
-                    "bindings/c",
-                    "bindings/go",
-                    "bindings/node",
-                    "bindings/python",
-                    "bindings/rust",
-                    "prebuilds",
-                    "node_modules",
-                    "grammar.js",
-                    "package.json",
-                    "package-lock.json",
-                    "pyproject.toml",
-                    "setup.py",
-                    "test",
-                    "examples",
-                    "ftplugin",
-                    "ftdetect",
-                    "plugin",
-                    ".editorconfig",
-                    ".github",
-                    ".gitignore",
-                    ".gitattributes",
-                ],
-                sources: [
-                    "src/parser.c",
-                    "src/scanner.c"
-                ],
-                resources: [
-                    .copy("queries")
-                ],
-                publicHeadersPath: "bindings/swift",
-                cSettings: [.headerSearchPath("src")])
+        .target(
+            name: "TreeSitterTest",
+            dependencies: [],
+            path: ".",
+            exclude: [
+                "Cargo.toml",
+                "Makefile",
+                "binding.gyp",
+                "bindings/c",
+                "bindings/go",
+                "bindings/node",
+                "bindings/python",
+                "bindings/rust",
+                "prebuilds",
+                "node_modules",
+                "grammar.js",
+                "package.json",
+                "package-lock.json",
+                "pyproject.toml",
+                "setup.py",
+                "test",
+                "examples",
+                "ftplugin",
+                "ftdetect",
+                "plugin",
+                ".editorconfig",
+                ".github",
+                ".gitignore",
+                ".gitattributes",
+            ],
+            sources: [
+                "src/parser.c",
+                "src/scanner.c"
+            ],
+            resources: [
+                .copy("queries")
+            ],
+            publicHeadersPath: "bindings/swift",
+            cSettings: [.headerSearchPath("src")]
+        ),
+        .testTarget(
+            name: "TreeSitterTestTests",
+            dependencies: [
+                "SwiftTreeSitter",
+                "TreeSitterTest",
+            ],
+            path: "bindings/swift/TreeSitterTestTests"
+        )
     ],
     cLanguageStandard: .c11
 )
