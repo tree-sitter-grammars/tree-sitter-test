@@ -53,7 +53,7 @@ static inline bool scan(TSLexer *lexer, Scanner *scanner, char chr, int symbol) 
     return true;
 }
 
-void *tree_sitter_test_external_scanner_create() {
+void *tree_sitter_test_external_scanner_create(void) {
     Scanner *scanner = ts_malloc(sizeof(Scanner));
     scanner->length = 0;
     scanner->suffix = '\0';
