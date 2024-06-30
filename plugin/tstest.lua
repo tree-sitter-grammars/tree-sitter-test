@@ -2,9 +2,8 @@ local is_file = vim.fn.filereadable
 
 local _cache = {}
 
----@param bufnr integer
----@param metadata table
-local function set_injection(_, _, bufnr, _, metadata)
+vim.treesitter.query.add_directive("set-language-from-grammar!", function(_, _, bufnr, _, metadata)
+    ---@cast bufnr integer
     local test_dir = vim.fs.find("test", {
         upward = true, type = "directory", limit = 1,
         path = vim.fs.dirname(vim.api.nvim_buf_get_name(bufnr))
@@ -37,8 +36,4 @@ local function set_injection(_, _, bufnr, _, metadata)
         _cache[test_dir] = metadata["injection.language"]
         file:close()
     end
-end
-
-if vim.g.tstest_dynamic_injection then
-    vim.treesitter.query.add_directive("set-language-from-grammar!", set_injection, {})
-end
+end, {})

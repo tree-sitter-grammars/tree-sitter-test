@@ -28,8 +28,6 @@ Here's how you can install it using [lazy.nvim](https://github.com/folke/lazy.nv
     build = "make parser/test.so",
     ft = "test",
     init = function()
-        -- toggle dynamic language injection
-        vim.g.tstest_dynamic_injection = false
         -- toggle full-width rules for test separators
         vim.g.tstest_fullwidth_rules = false
         -- set the highlight group of the rules
