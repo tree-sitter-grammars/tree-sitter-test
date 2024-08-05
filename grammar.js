@@ -45,10 +45,10 @@ module.exports = grammar({
       ":fail-fast",
       $._language,
       $._platform,
-      $.unknown_attr,
+      $.custom_attr,
     ),
 
-    unknown_attr:$=>seq(
+    custom_attr:$=>seq(
       ':',
       token.immediate(
         alias(/[\w\-_]+/, $.name),

@@ -29,7 +29,7 @@
       "required": false,
       "types": [
         {
-          "type": "unknown_attr",
+          "type": "custom_attr",
           "named": true
         }
       ]
@@ -45,6 +45,21 @@
       "types": [
         {
           "type": "attribute",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "custom_attr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "value",
           "named": true
         }
       ]
@@ -125,21 +140,6 @@
         },
         {
           "type": "separator",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "unknown_attr",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "value",
           "named": true
         }
       ]

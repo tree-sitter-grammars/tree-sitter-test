@@ -182,11 +182,11 @@
         },
         {
           "type": "SYMBOL",
-          "name": "unknown_attr"
+          "name": "custom_attr"
         }
       ]
     },
-    "unknown_attr": {
+    "custom_attr": {
       "type": "SEQ",
       "members": [
         {
