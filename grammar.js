@@ -90,6 +90,7 @@ module.exports = grammar({
       "solaris",
       "android",
       "windows",
+      /\w+/
     )),
 
     _eol: _ => /[\r\n]|\r\n/

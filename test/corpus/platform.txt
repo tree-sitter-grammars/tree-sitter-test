@@ -1,0 +1,27 @@
+===========|||
+platform
+===========|||
+
+===========
+platform
+:platform(linux)
+:platform(custom)
+===========
+
+input
+
+----
+
+output
+
+---|||
+
+(file
+  (test
+    (header
+      (separator)
+      (name)
+      (separator))
+    (input)
+    (separator)
+    (output)))
