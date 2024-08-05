@@ -30,8 +30,7 @@ module.exports = grammar({
 
     header: $ => seq(
       alias($._equals_begin, $.separator),
-      alias($._line, $.name),
-      $._eol,
+      alias(repeat(seq($._line, $._eol)), $.name),
       optional($.attributes),
       alias($._equals_end, $.separator),
     ),

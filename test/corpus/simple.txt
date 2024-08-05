@@ -63,8 +63,6 @@ attrs
       (separator)
       (name)
       (attributes
-        (attribute
-          (parameter))
         (attribute)
         (attribute)
         (attribute)
@@ -93,14 +91,48 @@ unknown attr
     (header
       (separator)
       (name)
-      (attributes
-        (attribute
-          (unknown_attr))
-        (attribute
-          (unknown_attr
-            (value)
-            (value)
-            (value))))
+      (separator))
+    (input)
+    (separator)))
+
+============|||
+empty title
+============|||
+
+============
+============
+
+---
+
+---|||
+
+(file
+  (test
+    (header
+      (separator)
+      (separator))
+    (input)
+    (separator)))
+
+==================|||
+multi line title
+==================|||
+
+======
+multi
+line
+title
+======
+
+---
+
+----|||
+
+(file
+  (test
+    (header
+      (separator)
+      (name)
       (separator))
     (input)
     (separator)))

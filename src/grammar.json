@@ -100,15 +100,23 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "SYMBOL",
-            "name": "_line"
+            "type": "REPEAT",
+            "content": {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_line"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "_eol"
+                }
+              ]
+            }
           },
           "named": true,
           "value": "name"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_eol"
         },
         {
           "type": "CHOICE",

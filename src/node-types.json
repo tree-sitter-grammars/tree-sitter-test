@@ -94,6 +94,11 @@
     "fields": {}
   },
   {
+    "type": "name",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "output",
     "named": true,
     "fields": {}
@@ -180,10 +185,6 @@
   {
     "type": "\\)",
     "named": false
-  },
-  {
-    "type": "name",
-    "named": true
   },
   {
     "type": "parameter",
