@@ -171,6 +171,73 @@
         {
           "type": "SYMBOL",
           "name": "_platform"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "unknown_attr"
+        }
+      ]
+    },
+    "unknown_attr": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": ":"
+        },
+        {
+          "type": "IMMEDIATE_TOKEN",
+          "content": {
+            "type": "ALIAS",
+            "content": {
+              "type": "PATTERN",
+              "value": "[\\w\\-_]+"
+            },
+            "named": true,
+            "value": "name"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "("
+                  },
+                  {
+                    "type": "REPEAT",
+                    "content": {
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "PATTERN",
+                          "value": "[^)]"
+                        },
+                        {
+                          "type": "STRING",
+                          "value": "\\)"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "STRING",
+                    "value": ")"
+                  }
+                ]
+              },
+              "named": true,
+              "value": "value"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },

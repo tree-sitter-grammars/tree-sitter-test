@@ -46,6 +46,22 @@ module.exports = grammar({
       ":fail-fast",
       $._language,
       $._platform,
+      $.unknown_attr,
+    ),
+
+    unknown_attr:$=>seq(
+      ':',
+      token.immediate(
+        alias(/[\w\-_]+/, $.name),
+      ),
+      optional(alias(
+        seq(
+          '(',repeat(
+            choice(/[^)]/, '\\)')
+          ),')'
+        ),
+        $.value
+      ))
     ),
 
     _language: $ => seq(

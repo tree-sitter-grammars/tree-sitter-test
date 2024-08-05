@@ -23,6 +23,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "unknown_attr",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -116,11 +126,35 @@
     }
   },
   {
+    "type": "unknown_attr",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "value",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "value",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "(",
     "named": false
   },
   {
     "type": ")",
+    "named": false
+  },
+  {
+    "type": ":",
     "named": false
   },
   {
@@ -141,6 +175,10 @@
   },
   {
     "type": ":skip",
+    "named": false
+  },
+  {
+    "type": "\\)",
     "named": false
   },
   {

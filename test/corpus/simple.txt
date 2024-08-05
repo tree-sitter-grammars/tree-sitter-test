@@ -1,0 +1,106 @@
+=========|||
+empty
+=========|||
+
+======
+empty
+======
+
+---
+
+---|||
+
+(file
+  (test
+    (header
+      (separator)
+      (name)
+      (separator))
+    (input)
+    (separator)))
+
+==============|||
+simple
+==============|||
+
+=======
+simple
+=======
+input
+----
+
+---|||
+
+(file
+  (test
+    (header
+      (separator)
+      (name)
+      (separator))
+    (input)
+    (separator)))
+
+=============|||
+attrs
+=============|||
+
+=========
+attrs
+:language(test)
+:skip
+:error
+:fail-fast
+:platform(linux)
+=========
+
+---
+
+---|||
+
+(file
+  (test
+    (header
+      (separator)
+      (name)
+      (attributes
+        (attribute
+          (parameter))
+        (attribute)
+        (attribute)
+        (attribute)
+        (attribute
+          (parameter)))
+      (separator))
+    (input)
+    (separator)))
+
+=============|||
+unknown attr
+=============|||
+
+======================
+unknown attr
+:unknown
+:unknown_attr(value)
+======================
+
+---
+
+---|||
+
+(file
+  (test
+    (header
+      (separator)
+      (name)
+      (attributes
+        (attribute
+          (unknown_attr))
+        (attribute
+          (unknown_attr
+            (value)
+            (value)
+            (value))))
+      (separator))
+    (input)
+    (separator)))
