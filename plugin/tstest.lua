@@ -31,8 +31,11 @@ vim.treesitter.query.add_directive("set-language-from-grammar!", function(_, _, 
     end
     if is_file(grammar_json) == 1 then
         local file = assert(io.open(grammar_json))
-        local _, name = file:read("l", "l")
-        metadata["injection.language"] = name:sub(12, #name - 2)
+        local line
+        repeat
+            line = file:read("*l")
+        until line:find([["name":]], 1, true)
+        metadata["injection.language"] = line:sub(12, #line - 2)
         _cache[test_dir] = metadata["injection.language"]
         file:close()
     end
