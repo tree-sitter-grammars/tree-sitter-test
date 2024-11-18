@@ -1,0 +1,28 @@
+{
+  "grammars": [
+    {
+      "name": "test",
+      "camelcase": "Test",
+      "path": ".",
+      "scope": "text.test",
+      "file-types": [
+        "test"
+      ],
+      "injection-regex": "^test$"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "TS corpus test grammar for tree-sitter",
+    "authors": [
+      {
+        "name": "ObserverOfTime",
+        "email": "chronobserver@disroot.org"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/tree-sitter-grammars/tree-sitter-test"
+    }
+  }
+}

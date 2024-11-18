@@ -24,8 +24,7 @@ Here's how you can install it using [lazy.nvim](https://github.com/folke/lazy.nv
 ```lua
 {
     "tree-sitter-grammars/tree-sitter-test",
-    -- compile on your own on Windows
-    build = "make parser/test.so",
+    build = "mkdir parser && tree-sitter build -o parser/test.so",
     ft = "test",
     init = function()
         -- toggle full-width rules for test separators

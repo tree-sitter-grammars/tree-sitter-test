@@ -2,58 +2,55 @@
   "name": "tree-sitter-test",
   "version": "0.1.0",
   "description": "TS corpus test grammar for tree-sitter",
-  "repository": "github:tree-sitter-grammars/tree-sitter-test",
-  "author": "ObserverOfTime <chronobserver@disroot.org>",
-  "contributors": [
-    "Amaan Qureshi <amaanq12@gmail.com>"
-  ],
+  "repository": "https://github.com/tree-sitter-grammars/tree-sitter-test",
   "license": "MIT",
+  "author": {
+    "name": "ObserverOfTime",
+    "email": "chronobserver@disroot.org"
+  },
+  "contributors": [
+    {
+      "name": "Amaan Quresehi",
+      "email": "amaanq12@gmail.com"
+    }
+  ],
   "main": "bindings/node",
   "types": "bindings/node",
-  "files": [
-    "grammar.js",
-    "binding.gyp",
-    "prebuilds/**",
-    "bindings/node/*",
-    "queries/**",
-    "src/**"
-  ],
   "keywords": [
     "incremental",
     "parsing",
     "tree-sitter",
     "test"
   ],
+  "files": [
+    "grammar.js",
+    "binding.gyp",
+    "prebuilds/**",
+    "bindings/node/*",
+    "queries/*",
+    "src/**",
+    "*.wasm"
+  ],
   "dependencies": {
-    "node-addon-api": "^8.0.0",
-    "node-gyp-build": "^4.8.0"
+    "node-addon-api": "^8.2.1",
+    "node-gyp-build": "^4.8.2"
   },
   "devDependencies": {
-    "tree-sitter-cli": "^0.22.2",
-    "prebuildify": "^6.0.0"
+    "prebuildify": "^6.0.1",
+    "tree-sitter-cli": "^0.24.4"
   },
   "peerDependencies": {
     "tree-sitter": "^0.21.1"
   },
   "peerDependenciesMeta": {
-    "tree_sitter": {
+    "tree-sitter": {
       "optional": true
     }
   },
   "scripts": {
     "install": "node-gyp-build",
-    "prestart": "tree-sitter build --wasm -o tree-sitter-test.wasm",
+    "prestart": "tree-sitter build --wasm",
     "start": "tree-sitter playground",
-    "test": "node --test"
-  },
-  "tree-sitter": [
-    {
-      "scope": "text.test",
-      "highlights": "queries/test/highlights.scm",
-      "injections": "queries/test/injections.scm",
-      "file-types": [
-        "test"
-      ]
-    }
-  ]
+    "test": "node --test bindings/node/*_test.js"
+  }
 }
