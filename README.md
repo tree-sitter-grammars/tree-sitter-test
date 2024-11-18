@@ -3,11 +3,9 @@
 [![CI][ci]](https://github.com/tree-sitter-grammars/tree-sitter-test/actions/workflows/ci.yml)
 [![discord][discord]](https://discord.gg/w7nTvsVJhm)
 [![matrix][matrix]](https://matrix.to/#/#tree-sitter-chat:matrix.org)
-<!-- TODO: uncomment these before publishing -->
-<!-- [![npm][npm]](https://www.npmjs.com/package/tree-sitter-test) -->
-<!-- [![crates][crates]](https://crates.io/crates/tree-sitter-test) -->
-<!-- [![pypi][pypi]](https://pypi.org/project/tree-sitter-test/) -->
-
+[![npm][npm]](https://www.npmjs.com/package/tree-sitter-test)
+[![crates][crates]](https://crates.io/crates/tree-sitter-test)
+[![pypi][pypi]](https://pypi.org/project/tree-sitter-test/)
 
 A tree-sitter parser for corpus test files.
 
