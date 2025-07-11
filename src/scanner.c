@@ -2,7 +2,6 @@
 #include "tree_sitter/parser.h"
 
 #include <string.h>
-#include <wctype.h>
 
 enum TokenType {
     EQUALS_BEGIN,
