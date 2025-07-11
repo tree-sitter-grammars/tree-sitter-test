@@ -2,13 +2,12 @@ name: CI
 
 on:
   push:
-    branches:
-      - master
-      - main
+    branches: [master]
     paths:
       - grammar.js
       - src/**
       - test/**
+      - examples/*
       - bindings/**
       - binding.gyp
   pull_request:
@@ -16,6 +15,7 @@ on:
       - grammar.js
       - src/**
       - test/**
+      - examples/*
       - bindings/**
       - binding.gyp
 
@@ -31,20 +31,25 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-14]
+        os: [ubuntu-latest, windows-latest, macos-latest]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Set up tree-sitter
-        uses: tree-sitter/setup-action/cli@v1
+        uses: tree-sitter/setup-action/cli@v2
       - name: Run tests
         uses: tree-sitter/parser-test-action@v2
         with:
+          generate: false
           test-node: true
-          test-rust: ${{runner.os == 'Linux'}}
-          test-go: ${{runner.os == 'Windows'}}
-          test-swift: ${{runner.os == 'macOS'}}
+          test-rust: true
+          test-go: true
+          test-python: true
+          # FIXME: tree-sitter/tree-sitter#4589
+          test-swift: false # ${{runner.os == 'macOS'}}
           node-version: ${{vars.NODE_VERSION}}
+          python-version: ${{vars.PYTHON_VERSION}}
+          swift-version: ${{vars.SWIFT_VERSION}}
       - name: Parse examples
         uses: tree-sitter/parse-action@v4
         with:
