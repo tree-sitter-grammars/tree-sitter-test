@@ -3,10 +3,6 @@ root = true
 [*]
 charset = utf-8
 
-[*.lua]
-indent_style = space
-indent_size = 4
-
 [*.{json,toml,yml,gyp}]
 indent_style = space
 indent_size = 2

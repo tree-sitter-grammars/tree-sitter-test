@@ -7,6 +7,6 @@ final class TreeSitterTestTests: XCTestCase {
         let parser = Parser()
         let language = Language(language: tree_sitter_test())
         XCTAssertNoThrow(try parser.setLanguage(language),
-                         "Error loading Test grammar")
+                         "Error loading TS corpus test grammar")
     }
 }

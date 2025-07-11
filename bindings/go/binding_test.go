@@ -10,6 +10,6 @@ import (
 func TestCanLoadGrammar(t *testing.T) {
 	language := tree_sitter.NewLanguage(tree_sitter_test.Language())
 	if language == nil {
-		t.Errorf("Error loading Test grammar")
+		t.Errorf("Error loading TS corpus test grammar")
 	}
 }

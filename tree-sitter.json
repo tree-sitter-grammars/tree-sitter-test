@@ -3,12 +3,14 @@
     {
       "name": "test",
       "camelcase": "Test",
-      "path": ".",
+      "title": "TS corpus test",
       "scope": "text.test",
       "file-types": [
         "test"
       ],
-      "injection-regex": "^test$"
+      "injection-regex": "^test$",
+      "highlights": "queries/test/highlights.scm",
+      "injections": "queries/test/injections.scm"
     }
   ],
   "metadata": {
@@ -22,7 +24,8 @@
       }
     ],
     "links": {
-      "repository": "https://github.com/tree-sitter-grammars/tree-sitter-test"
+      "repository": "https://github.com/tree-sitter-grammars/tree-sitter-test",
+      "funding": "https://github.com/sponsors/ObserverOfTime"
     }
   }
 }
