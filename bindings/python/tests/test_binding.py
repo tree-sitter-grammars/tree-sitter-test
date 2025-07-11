@@ -1,6 +1,7 @@
 from unittest import TestCase
 
-import tree_sitter, tree_sitter_test
+import tree_sitter
+import tree_sitter_test
 
 
 class TestLanguage(TestCase):
@@ -8,4 +9,4 @@ class TestLanguage(TestCase):
         try:
             tree_sitter.Language(tree_sitter_test.language())
         except Exception:
-            self.fail("Error loading Test grammar")
+            self.fail("Error loading TS corpus test grammar")
