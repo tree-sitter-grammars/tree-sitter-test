@@ -1,6 +1,6 @@
 {
   "name": "@tree-sitter-grammars/tree-sitter-test",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "TS corpus test grammar for tree-sitter",
   "repository": "https://github.com/tree-sitter-grammars/tree-sitter-test",
   "funding": "https://github.com/sponsors/ObserverOfTime",

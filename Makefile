@@ -4,7 +4,7 @@ endif
 
 LANGUAGE_NAME := tree-sitter-test
 HOMEPAGE_URL := https://github.com/tree-sitter-grammars/tree-sitter-test
-VERSION := 0.1.0
+VERSION := 0.2.0
 
 # repository
 SRC_DIR := src
