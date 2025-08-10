@@ -11,8 +11,29 @@
   (input) @injection.content)
 
 ((test
+  [
+    (header
+      (separator)
+      .
+      (name)
+      .
+      (separator))
+    (header
+      (attributes
+        .
+        (attribute
+          !cst)+ .))
+  ]
   (output) @injection.content)
   (#set! injection.language "query"))
+
+((test
+  (header
+    (attributes
+      (attribute
+        cst: _)))
+  (output) @injection.content)
+  (#set! injection.language "cst"))
 
 ; NOTE: custom dynamic injection
 ((test

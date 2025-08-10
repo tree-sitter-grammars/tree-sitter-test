@@ -3,6 +3,16 @@
     "type": "attribute",
     "named": true,
     "fields": {
+      "cst": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": ":cst",
+            "named": false
+          }
+        ]
+      },
       "language": {
         "multiple": false,
         "required": false,
@@ -122,6 +132,10 @@
   },
   {
     "type": ")",
+    "named": false
+  },
+  {
+    "type": ":cst",
     "named": false
   },
   {
