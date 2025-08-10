@@ -154,8 +154,12 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "STRING",
-          "value": ":skip"
+          "type": "FIELD",
+          "name": "cst",
+          "content": {
+            "type": "STRING",
+            "value": ":cst"
+          }
         },
         {
           "type": "STRING",
@@ -172,6 +176,10 @@
         {
           "type": "SYMBOL",
           "name": "_platform"
+        },
+        {
+          "type": "STRING",
+          "value": ":skip"
         }
       ]
     },

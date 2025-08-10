@@ -41,11 +41,12 @@ module.exports = grammar({
     ),
 
     attribute: $ => choice(
-      ":skip",
+      field("cst", ":cst"),
       ":error",
       ":fail-fast",
       $._language,
       $._platform,
+      ":skip",
     ),
 
     _language: $ => seq(

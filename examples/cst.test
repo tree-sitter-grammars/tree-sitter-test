@@ -1,0 +1,9 @@
+====================
+Test with cst marker
+:cst
+====================
+1
+---
+0:0 - 1:0   source_file
+0:0 - 0:1   expression
+0:0 - 0:1     number_literal `1`

@@ -1,11 +1,12 @@
 (name) @markup.heading
 
 [
-  ":skip"
+  ":cst"
   ":error"
   ":fail-fast"
   ":language"
   ":platform"
+  ":skip"
 ] @attribute
 
 (attribute
