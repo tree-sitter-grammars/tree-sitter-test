@@ -10,6 +10,7 @@ on:
       - examples/*
       - bindings/**
       - binding.gyp
+      - .github/workflows/ci.yml
   pull_request:
     paths:
       - grammar.js
@@ -18,6 +19,7 @@ on:
       - examples/*
       - bindings/**
       - binding.gyp
+      - .github/workflows/ci.yml
 
 concurrency:
   group: ${{github.workflow}}-${{github.ref}}
@@ -31,10 +33,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-24.04, windows-2022, macos-15]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Set up tree-sitter
         uses: tree-sitter/setup-action/cli@v2
       - name: Run tests
@@ -45,8 +47,7 @@ jobs:
           test-rust: true
           test-go: true
           test-python: true
-          # FIXME: tree-sitter/tree-sitter#4589
-          test-swift: false # ${{runner.os == 'macOS'}}
+          test-swift: ${{runner.os == 'macOS'}}
           node-version: ${{vars.NODE_VERSION}}
           python-version: ${{vars.PYTHON_VERSION}}
           swift-version: ${{vars.SWIFT_VERSION}}
@@ -60,7 +61,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 2
       - name: Check for scanner changes
